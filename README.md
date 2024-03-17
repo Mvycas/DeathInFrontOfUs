@@ -3,7 +3,7 @@
 
 ## Blog Posts:
 
-- [Post 01 - Hello world! (Roll a ball game)](./Blog/Post_01.md)
+- [Post 01 - Hello world! (Roll a ball game)]([./Blog/Post_01.md](https://blog-gamedev.vercel.app/post/helloworld/))
 - [Post 02 - Game Design](./Blog/design.md)
 - [Post 03 - Coming soon](./Blog/404.md)
 

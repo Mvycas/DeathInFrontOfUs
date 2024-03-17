@@ -18,6 +18,7 @@ namespace HealthSystem
         protected override void Die()
         {
             Debug.Log("Player died!");
+            Destroy(gameObject);
             // animations? // death UI? To continue and respawn or to quit game? // Sound effects?
         }
     }

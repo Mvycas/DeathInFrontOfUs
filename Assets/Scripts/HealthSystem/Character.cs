@@ -1,26 +1,29 @@
-using HealthSystem;
+using Interfaces;
 using UnityEngine;
 
-
-public abstract class Character : MonoBehaviour
+namespace HealthSystem
 {
-    [SerializeField] private CharacterData characterData;
-    private Health health;
-
-    protected virtual void Awake()
+    public abstract class Character : MonoBehaviour, IDamageable
     {
-        //Initialize Character health with data coming from CharacterData asset file
-        health = new Health(characterData.maxHealth);
-        // Subscribe to the OnDeath event
-        health.OnDeath += Die;
-    }
+        [SerializeField] private CharacterData.CharacterData characterData;
+        private Health _health;
+
+        protected virtual void Awake()
+        {
+            //Initialize Character health with data coming from CharacterData asset file
+            _health = new Health(characterData.maxHealth);
+            // Subscribe to the OnDeath event
+            _health.OnDeath += Die;
+        }
     
-    public void ApplyDamage(float damage)
-    {
-        health.TakeDamage(damage);
-    }
+        public void ApplyDamage(float damage)
+        {
+            _health.TakeDamage(damage);
+            Debug.Log(damage);
+        }
 
-    // The Die method is abstract - it will be implemented differently by every subclass
-    protected abstract void Die();
+        // The Die method is abstract - it will be implemented differently by every subclass
+        protected abstract void Die();
+    }
 }
 

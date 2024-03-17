@@ -1,11 +1,12 @@
 using Interfaces;
+using ScriptableCharactersData;
 using UnityEngine;
 
 namespace HealthSystem
 {
     public abstract class Character : MonoBehaviour, IDamageable
     {
-        [SerializeField] private CharacterData.CharacterData characterData;
+        [SerializeField] private CharacterData characterData;
         private Health _health;
 
         protected virtual void Awake()

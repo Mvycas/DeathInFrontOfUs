@@ -5,7 +5,7 @@
 
 - [Post 01 - Hello world! (Roll a ball game)](https://blog-gamedev.vercel.app/post/helloworld/)
 - [Post 02 - Game Design](./Blog/Post_02.md)
-- [Post 03 - Coming soon](./Blog/Post_03.md)
+- [Post 03 - The Odyssey Unfolds: Inside look at the First Chapters of 'DeathInFrontOfUs'](./Blog/Post_03.md)
 
 ## 
 

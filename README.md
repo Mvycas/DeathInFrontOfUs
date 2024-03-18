@@ -4,8 +4,8 @@
 ## Blog Posts:
 
 - [Post 01 - Hello world! (Roll a ball game)](https://blog-gamedev.vercel.app/post/helloworld/)
-- [Post 02 - Game Design](./Blog/design.md)
-- [Post 03 - Coming soon](./Blog/404.md)
+- [Post 02 - Game Design](./Blog/Post_02.md)
+- [Post 03 - Coming soon](./Blog/Post_03.md)
 
 ## 
 

@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ShootingSystem
 {
     public class BulletPool : MonoBehaviour
     {
-        public static BulletPool SharedInstance;
+        public static BulletPool sharedInstance;
         public List<GameObject> pooledBullets;
         public GameObject bulletPrefab;
         public int bulletAmount = 20;
 
-        void Awake()
+        private void Awake()
         {
-            SharedInstance = this;
+            sharedInstance = this;
             pooledBullets = new List<GameObject>();
-            GameObject tmp;
-            for (int i = 0; i < bulletAmount; i++)
+            for (var i = 0; i < bulletAmount; i++)
             {
-                tmp = Instantiate(bulletPrefab);
+                var tmp = Instantiate(bulletPrefab);
                 tmp.SetActive(false);
                 pooledBullets.Add(tmp);
             }
@@ -25,15 +25,7 @@ namespace ShootingSystem
 
         public GameObject GetPooledBullet()
         {
-            for (int i = 0; i < pooledBullets.Count; i++)
-            {
-                if (!pooledBullets[i].activeInHierarchy)
-                {
-                    return pooledBullets[i];
-                }
-            }
-            // Optionally extend the pool here if needed
-            return null;
+            return pooledBullets.FirstOrDefault(t => !t.activeInHierarchy);
         }
     }
 }

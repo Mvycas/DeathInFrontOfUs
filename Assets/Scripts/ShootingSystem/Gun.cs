@@ -17,7 +17,7 @@ namespace ShootingSystem
         
         public void ShootBullet()
         {
-            GameObject bullet = BulletPool.SharedInstance.GetPooledBullet();
+            GameObject bullet = BulletPool.sharedInstance.GetPooledBullet();
             if (bullet == null) return;
             // Calculate random spread for the shoot direction
             Vector3 shootDirection = Quaternion.Euler(
@@ -27,14 +27,14 @@ namespace ShootingSystem
             ) * barrelEnd.forward;
 
             bullet.transform.position = barrelEnd.position; // Set the bullet's position
-            bullet.transform.rotation = Quaternion.LookRotation(shootDirection); // Set the bullet's rotation
+            //bullet.transform.rotation = Quaternion.LookRotation(shootDirection); // Set the bullet's rotation
         
             bullet.SetActive(true); // Activate the bullet
 
             // Apply force to the bullet Rigidbody
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero; // Reset the bullet's velocity before applying a new force
-            rb.interpolation = RigidbodyInterpolation.Interpolate; // Ensure smooth motion
+            //rb.interpolation = RigidbodyInterpolation.Interpolate; // Ensure smooth motion
             rb.AddForce(shootDirection * bulletSpeed, ForceMode.VelocityChange);
         
             // Optional: Debug line to visualize the shooting direction

@@ -4,8 +4,9 @@ Post creation date: "17-03-2024"
 Author: Martynas Vycas
 ---
 
-- Current Gameplay:
-<iframe width="560" height="315" src="https://youtu.be/FCB5tSaAnJY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+## Current Gameplay:
+  
+[![Gameplay](http://img.youtube.com/vi/FCB5tSaAnJY/0.jpg)](http://www.youtube.com/watch?v=FCB5tSaAnJY "Video Title")
 
 In the gameplay video provided above, you can observe the implementation of the following systems:
 
@@ -307,19 +308,19 @@ OnCollisionEnter(Collision collision): verifies whether the collision involves a
 
 # Sources:
 
-https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.firstordefault?view=net-8.0
+- https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.firstordefault?view=net-8.0
 
-https://docs.unity3d.com/ScriptReference/GameObject-activeInHierarchy.html
+- https://docs.unity3d.com/ScriptReference/GameObject-activeInHierarchy.html
 
-https://www.kodeco.com/847-object-pooling-in-unity
+- https://www.kodeco.com/847-object-pooling-in-unity
 
 # Resources used: 
 
-Megan (Player character): https://www.mixamo.com/#/?page=1&query=megan&type=Character
-Animations: https://www.mixamo.com/
-Map & Environment: https://assetstore.unity.com/packages/3d/environments/flooded-grounds-48529
-Gore effect: https://assetstore.unity.com/packages/vfx/particles/blood-gush-73426
-Trees: https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076
-Submachine Gun (UZI): https://assetstore.unity.com/packages/3d/props/guns/submachine-gun-20746
-Zombies: https://assetstore.unity.com/packages/3d/characters/humanoids/zombie-30232
+- Megan (Player character): https://www.mixamo.com/#/?page=1&query=megan&type=Character
+- Animations: https://www.mixamo.com/
+- Map & Environment: https://assetstore.unity.com/packages/3d/environments/flooded-grounds-48529
+- Gore effect: https://assetstore.unity.com/packages/vfx/particles/blood-gush-73426
+- Trees: https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076
+- Submachine Gun (UZI): https://assetstore.unity.com/packages/3d/props/guns/submachine-gun-20746
+- Zombies: https://assetstore.unity.com/packages/3d/characters/humanoids/zombie-30232
 

@@ -8,7 +8,8 @@ namespace ShootingSystem
         public float bulletSpeed = 1000f;
         public float spreadAngle = 5f; // Degrees of spread
         public GameObject muzzleFlashObject; // Assign muzzle flash in the editor
-    
+        public ObjectPool bulletPool; // Assign this in the editor or find it dynamically in Awake/Start
+
         private void Awake()
         {
             // Ensure the muzzle flash is disabled on start
@@ -17,8 +18,9 @@ namespace ShootingSystem
         
         public void ShootBullet()
         {
-            GameObject bullet = BulletPool.sharedInstance.GetPooledBullet();
+            GameObject bullet = bulletPool.GetPooledObject();
             if (bullet == null) return;
+            
             // Calculate random spread for the shoot direction
             Vector3 shootDirection = Quaternion.Euler(
                 0, // Pitch

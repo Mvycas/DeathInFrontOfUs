@@ -4,9 +4,12 @@ Post creation date: "17-03-2024"
 Author: Martynas Vycas
 ---
 
-## Current Gameplay:
+## Current Gameplay
+
+Click on the image below to view the gameplay on YouTube:
   
-[![Gameplay](http://img.youtube.com/vi/FCB5tSaAnJY/0.jpg)](http://www.youtube.com/watch?v=FCB5tSaAnJY "Video Title")
+[![Gameplay](https://img.youtube.com/vi/FCB5tSaAnJY/0.jpg)](https://www.youtube.com/watch?v=FCB5tSaAnJY "Video Title")
+
 
 In the gameplay video provided above, you can observe the implementation of the following systems:
 

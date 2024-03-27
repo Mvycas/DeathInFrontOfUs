@@ -10,7 +10,7 @@ namespace HealthSystem
         protected override void Die()
         {
             Debug.Log("Zombie died");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

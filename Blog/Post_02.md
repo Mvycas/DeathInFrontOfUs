@@ -37,6 +37,6 @@ Post creation date: "25-02-2024"
 ---
 ## Art
 
--"Game cover (Generated with DALL-E)"
+-"Game cover (Generated with DALL-E)" (Text was added using Photoshop)
 
 ![Game cover concept art](https://i.ibb.co/c66XcxP/DALL-E-2024-02-23-02-56-34-Create-a-cover-image-for-a-video-game-titled-Death-in-Front-of-Us-blendin.png)

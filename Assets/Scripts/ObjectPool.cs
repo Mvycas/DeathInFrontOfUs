@@ -2,6 +2,8 @@
 using System.Linq;
 using UnityEngine;
 
+namespace ObjectPoolingSystem
+{
 public class ObjectPool : MonoBehaviour
 {
     public GameObject prefabToPool;
@@ -34,4 +36,5 @@ public class ObjectPool : MonoBehaviour
         return _pooledObjects.Count(obj => obj.activeInHierarchy);
     }
     
+}
 }

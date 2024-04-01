@@ -4,33 +4,30 @@ using System.Collections.Generic;
 public class CameraController : MonoBehaviour
 {
     public GameObject player;
-    // Layer mask of obstruction objects (That needs to be diffused)
-    public LayerMask obstructionLayer; 
-    // Material to apply when objects are obstructing the camera view
-    public Material transparentMaterial; 
+    public LayerMask transparencyLayer; // Layer for objects that become transparent upon collision
+    public LayerMask zoomLayer; // Layer for objects that trigger camera zoom upon collision
+    public Material transparentMaterial;
+    
 
     private Vector3 offset;
-    
-    // Dictionary to store collided obj material before diffusion
-    // used to revert back from transparent to the org material
-    // when it does not obstruct camera view anymore
-    private Dictionary<Collider, Material> originalMaterials = new Dictionary<Collider, Material>(); 
+    private Vector3 originalOffset;
+    private float zoomSpeed = 7f;
+    private float minimumOffsetDistance = 8.5f;
+    private Dictionary<Collider, Material> originalMaterials = new Dictionary<Collider, Material>();
+    private bool isObstructed = false;
+    private int zoomLayerCollisionCount = 0;
+
 
     void Start()
     {
-        offset = transform.position - player.transform.position;
+        originalOffset = transform.position - player.transform.position;
+        offset = originalOffset;
 
-        // Add and configure the camera collider as a trigger
-        // // later used for the obstruction diffusion logic
         BoxCollider cameraCollider = gameObject.AddComponent<BoxCollider>();
         cameraCollider.isTrigger = true;
-        // Spawned collider size
-        cameraCollider.size = new Vector3(4f, 4f, 4f);
-        // Center the collider
-        cameraCollider.center = new Vector3(0f, 0f, 5f);  
+        cameraCollider.size = new Vector3(0.5f, 0.5f, 13f);
+        cameraCollider.center = new Vector3(0f, 0f, 5f);
 
-        // Add a Rigidbody to camera to interact with triggers,
-        // set to kinematic since we don't want physics forces applied
         Rigidbody cameraRigidbody = gameObject.AddComponent<Rigidbody>();
         cameraRigidbody.isKinematic = true;
         cameraRigidbody.useGravity = false;
@@ -38,37 +35,57 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        // Move the camera to maintain the offset from the player
         transform.position = player.transform.position + offset;
+
+        if (isObstructed)
+        {
+            float distanceToZoom = Mathf.Max(minimumOffsetDistance, offset.magnitude - (zoomSpeed * Time.deltaTime));
+            offset = offset.normalized * distanceToZoom;
+        }
+        else if (offset.magnitude < originalOffset.magnitude)
+        {
+            offset = Vector3.MoveTowards(offset, originalOffset, zoomSpeed * Time.deltaTime);
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the object is on the obstruction layer
-        if (((1 << other.gameObject.layer) & obstructionLayer) != 0)
+        // Check for transparency layer collision
+        if (((1 << other.gameObject.layer) & transparencyLayer.value) != 0)
         {
             Renderer objRenderer = other.GetComponent<Renderer>();
             if (objRenderer != null && !originalMaterials.ContainsKey(other))
             {
-                // Save the original material and set to transparent
                 originalMaterials[other] = objRenderer.material;
                 objRenderer.material = transparentMaterial;
             }
+        }
+
+        if (((1 << other.gameObject.layer) & zoomLayer.value) != 0) {
+            zoomLayerCollisionCount++;
+            isObstructed = true;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        // Check if the object is in the dictionary of obstructions
-        if (originalMaterials.TryGetValue(other, out Material originalMaterial))
+        // Handle exiting transparency layer
+        if (((1 << other.gameObject.layer) & transparencyLayer.value) != 0 && originalMaterials.TryGetValue(other, out Material originalMaterial))
         {
             Renderer objRenderer = other.GetComponent<Renderer>();
             if (objRenderer != null)
             {
-                // Restore the original material
                 objRenderer.material = originalMaterial;
-                // Remove from the dictionary
                 originalMaterials.Remove(other);
+            }
+        }
+
+        // Handle exiting zoom layer
+        if (((1 << other.gameObject.layer) & zoomLayer.value) != 0) {
+            zoomLayerCollisionCount--;
+            if (zoomLayerCollisionCount <= 0) {
+                isObstructed = false;
+                zoomLayerCollisionCount = 0; // Ensure it doesn't go negative
             }
         }
     }

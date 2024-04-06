@@ -1,26 +1,21 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class BuildingVisibilityController : MonoBehaviour
 {
     public Material[] buildingMaterials; // Materials that have the HeightThreshold property
     public float targetThreshold = 20f; // Target height of the building // maximum height of the building upon entrance
-    private float[] _initialThresholds; // Array to hold the initial values // In case specific building has/owns more than one material
+    private float _initialThreshold; // initial value of height threshold // used as a reference when reverting back
     public float enterDuration = 0.5f; // Duration of the interpolation for trigger enter
     public float exitDuration = 2f; // Duration of the interpolation for trigger exit
 
     private void Start()
     {
-        // Initialize the initialThresholds array to hold the initial height threshold values of each material.
-        // This is crucial because different materials may have distinct initial threshold values.
-        // Failing to store these values could lead to inconsistencies in restoring thresholds on OnTriggerExit.
-        _initialThresholds = new float[buildingMaterials.Length];
-        for (int i = 0; i < buildingMaterials.Length; i++)
+        // Actually all materials must have the same initial threshold for one specific object,
+        // so we just need to check the first one for this value:
+        if (buildingMaterials.Length > 0 && buildingMaterials[0].HasProperty("_HeightThreshold"))
         {
-            if (buildingMaterials[i].HasProperty("_HeightThreshold"))
-            {
-                _initialThresholds[i] = buildingMaterials[i].GetFloat("_HeightThreshold");
-            }
+            _initialThreshold = buildingMaterials[0].GetFloat("_HeightThreshold");
         }
     }
 
@@ -31,7 +26,7 @@ public class BuildingVisibilityController : MonoBehaviour
             // Stop any existing interpolation coroutines
             StopAllCoroutines(); 
             // Start interpolation towards the target thresholds
-            StartCoroutine(InterpolateHeightThreshold(targetThreshold, false, enterDuration));
+            StartCoroutine(InterpolateHeightThreshold(targetThreshold, false, enterDuration)); 
         }
     }
 
@@ -40,9 +35,9 @@ public class BuildingVisibilityController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Stop any existing interpolation coroutines
-            StopAllCoroutines();
-            // Start interpolation back to the initial thresholds
-            StartCoroutine(InterpolateHeightThreshold(targetThreshold, true, exitDuration));
+            StopAllCoroutines(); 
+            // Start interpolation back to the initial threshold
+            StartCoroutine(InterpolateHeightThreshold(targetThreshold, true, exitDuration)); 
         }
     }
 
@@ -52,16 +47,16 @@ public class BuildingVisibilityController : MonoBehaviour
         float time = 0f;
         while (time < duration)
         {
-            for (int i = 0; i < buildingMaterials.Length; i++)
+            foreach (Material material in buildingMaterials)
             {
-                if (buildingMaterials[i].HasProperty("_HeightThreshold"))
+                if (material.HasProperty("_HeightThreshold"))
                 {
                     // Determine the start and end values based on whether we are reverting or not
-                    float startValue = reverting ? targetValue : _initialThresholds[i];
-                    float endValue = reverting ? _initialThresholds[i] : targetValue;
+                    float startValue = reverting ? targetValue : _initialThreshold;
+                    float endValue = reverting ? _initialThreshold : targetValue;
 
                     float newThreshold = Mathf.Lerp(startValue, endValue, time / duration);
-                    buildingMaterials[i].SetFloat("_HeightThreshold", newThreshold);
+                    material.SetFloat("_HeightThreshold", newThreshold);
                 }
             }
             time += Time.deltaTime;
@@ -69,11 +64,11 @@ public class BuildingVisibilityController : MonoBehaviour
         }
 
         // After interpolation, set the height threshold to the exact target or initial value
-        for (int i = 0; i < buildingMaterials.Length; i++)
+        foreach (Material material in buildingMaterials)
         {
-            if (buildingMaterials[i].HasProperty("_HeightThreshold"))
+            if (material.HasProperty("_HeightThreshold"))
             {
-                buildingMaterials[i].SetFloat("_HeightThreshold", reverting ? _initialThresholds[i] : targetValue);
+                material.SetFloat("_HeightThreshold", reverting ? _initialThreshold : targetValue);
             }
         }
     }

@@ -11,8 +11,8 @@ public class CameraController : MonoBehaviour
 
     private Vector3 offset;
     private Vector3 originalOffset;
-    private float zoomSpeed = 7f;
-    private float minimumOffsetDistance = 8.5f;
+    public float zoomSpeed = 7f;
+    public float minimumOffsetDistance = 8.5f;
     private Dictionary<Collider, Material> originalMaterials = new Dictionary<Collider, Material>();
     private bool isObstructed = false;
     private int zoomLayerCollisionCount = 0;

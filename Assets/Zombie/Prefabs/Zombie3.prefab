@@ -810,6 +810,9 @@ GameObject:
   - component: {fileID: 5904928101275766035}
   - component: {fileID: 245042596339202333}
   - component: {fileID: 2932675065898688383}
+  - component: {fileID: 7596817583509416651}
+  - component: {fileID: 5582025680632038671}
+  - component: {fileID: 6265958405068642627}
   m_Layer: 0
   m_Name: Zombie3
   m_TagString: Zombie
@@ -918,6 +921,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: a684659f2e2d41e48a016134147c03ef, type: 2}
+--- !u!195 &7596817583509416651
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803014352389650695}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.3
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &5582025680632038671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803014352389650695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486161db34cc4966b6dbb35bf94e708a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 7596817583509416651}
+  speedWalk: 3.5
+  speedRun: 7
+  lastKnownPlayerPosition: {x: 0, y: 0, z: 0}
+  waypointObjects: []
+--- !u!114 &6265958405068642627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803014352389650695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdb160d410449a880e95bbec9849c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 70
+  viewAngle: 59
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 512
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &4956532458698703312
 GameObject:
   m_ObjectHideFlags: 0

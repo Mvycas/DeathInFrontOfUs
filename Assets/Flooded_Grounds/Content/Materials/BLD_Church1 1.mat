@@ -117,7 +117,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0.3
     - _GlossyReflections: 0
-    - _HeightThreshold: 38.965282
+    - _HeightThreshold: 53
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

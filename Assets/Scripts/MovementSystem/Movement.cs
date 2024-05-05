@@ -20,6 +20,17 @@ namespace MovementSystem
         private const float Gravity = -9.81f;
         private float _verticalVelocity;
         private bool _isJumping;
+        private bool _isPaused;
+
+        private void OnEnable()
+        {
+            GameEvents.instance.onPause.AddListener(HandlePauseToggle);
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.instance.onPause.RemoveListener(HandlePauseToggle);
+        }
 
         private void Awake()
         {
@@ -30,9 +41,24 @@ namespace MovementSystem
 
         private void Update()
         {
+            if (_isPaused)
+                return;
+
             HandleMovement(_playerInputConfig.MovementInput);
             HandleJump();
             HandleGravity();
+        }
+
+        public void HandlePauseToggle(bool isPaused)
+        {
+            _isPaused = isPaused;
+
+            if (_isPaused)
+            {
+                _animator.SetFloat("input_X", 0);
+                _animator.SetFloat("input_Y", 0);
+                _animator.SetBool("jump", false);
+            }
         }
 
         private void HandleMovement(Vector2 input)
@@ -82,9 +108,6 @@ namespace MovementSystem
             RaycastHit hit;
             float checkDistance = 0.35f; // Should be slightly more than the height of the character's step offset
             bool isGrounded = Physics.Raycast(transform.position, -Vector3.up, out hit, checkDistance);
-
-            // Optionally, check if the ground is within a certain layer (e.g., a ground layer)
-            // bool isGrounded = hit.collider != null && groundLayers == (groundLayers | (1 << hit.collider.gameObject.layer));
 
             return isGrounded;
         }

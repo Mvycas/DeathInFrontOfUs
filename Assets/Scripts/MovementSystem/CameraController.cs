@@ -6,6 +6,9 @@ namespace MovementSystem
 {
     public class CameraController : MonoBehaviour
     {
+        public GameObject mainMenuPanel;  
+
+        
         public GameObject player;
         public LayerMask transparencyLayer; // Layer for objects to become transparent upon collision
         public LayerMask zoomLayer; // Layer for objects that trigger camera zoom upon collision
@@ -46,13 +49,14 @@ namespace MovementSystem
             {
                 StopCoroutine(_currentTransition);
             }
-
+            
             this._isPaused = isPaused;
             _currentTransition = StartCoroutine(isPaused ? TransitionToPauseView() : TransitionToGameView());
         }
 
         void Start()
         {
+            mainMenuPanel.SetActive(false);
             _originalOffset = transform.position - player.transform.position;
             _offset = _originalOffset;
             _originalRotation = transform.rotation; 
@@ -79,11 +83,13 @@ namespace MovementSystem
             }
 
             IsTransitioning = false;
+            mainMenuPanel.SetActive(true);
             _currentTransition = null; 
         }
 
         private IEnumerator TransitionToGameView()
         {
+            mainMenuPanel.SetActive(false);
             IsTransitioning = true;
             while (Vector3.Distance(transform.position, player.transform.position + _originalOffset) > 0.1f ||
                    Quaternion.Angle(transform.rotation, _originalRotation) > 0.1f)

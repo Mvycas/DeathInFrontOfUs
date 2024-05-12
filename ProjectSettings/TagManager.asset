@@ -6,6 +6,7 @@ TagManager:
   tags:
   - bullet
   - Zombie
+  - InteractableUI
   layers:
   - Default
   - TransparentFX

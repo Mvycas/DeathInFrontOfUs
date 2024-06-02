@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3352160}
   - component: {fileID: 2367686}
   - component: {fileID: 6475504}
+  - component: {fileID: 9119202243117308348}
   m_Layer: 0
   m_Name: Pavement2_End_A
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 19168a2efac778e44bb83444416d1fb0, type: 3}
+--- !u!208 &9119202243117308348
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122084}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 0.45000002, z: 3.0070002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -2, y: 0.45000002, z: 0}
+  m_TimeToStationary: 0.5

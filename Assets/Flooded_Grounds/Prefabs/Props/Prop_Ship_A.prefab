@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 464636}
   - component: {fileID: 3368166}
   - component: {fileID: 2321186}
+  - component: {fileID: 5315423237770058927}
   m_Layer: 8
   m_Name: Prop_Ship_A_LOD0
   m_TagString: Untagged
@@ -399,3 +400,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &5315423237770058927
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173548}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 17.861, y: 10.984, z: 5.0160003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 2.6090002, y: 5.984, z: 0.072000004}
+  m_TimeToStationary: 0.5

@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 3367966}
   - component: {fileID: 2386348}
   - component: {fileID: 6465762}
+  - component: {fileID: 8692292162832425569}
   m_Layer: 0
   m_Name: Struct_Pavilion_A_LOD0
   m_TagString: Untagged
@@ -274,6 +275,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: 96bc21f18d784134caccf6246836dcc0, type: 3}
+--- !u!208 &8692292162832425569
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188630}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.589, y: 6.3450003, z: 3.354}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.13900001, y: -0.264, z: 0.11000001}
+  m_TimeToStationary: 0.5
 --- !u!1 &192616
 GameObject:
   m_ObjectHideFlags: 0

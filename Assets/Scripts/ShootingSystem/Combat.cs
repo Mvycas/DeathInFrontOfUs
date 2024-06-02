@@ -51,8 +51,7 @@ namespace ShootingSystem
         private void Attack()
         {
             
-            gun.muzzleFlashObject.SetActive(true);     
-            
+            gun.muzzleFlashObject.SetActive(true);
             gun.ShootBullet();
             _timestamp = Time.time + timeBetweenShots;
             Debug.Log("FIRE FIRE");

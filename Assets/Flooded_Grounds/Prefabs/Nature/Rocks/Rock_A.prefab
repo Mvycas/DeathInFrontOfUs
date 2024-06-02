@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 3363512}
   - component: {fileID: 2358212}
   - component: {fileID: 6415112}
+  - component: {fileID: 5731439392086377256}
   m_Layer: 0
   m_Name: lo_Rock_A_LOD0
   m_TagString: Untagged
@@ -274,6 +275,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 9345f632db63d60489ffbd611651385e, type: 3}
+--- !u!208 &5731439392086377256
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151412}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.7310002, y: 3.8120003, z: 1.5920001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.003, y: 3.9020002, z: -0.016}
+  m_TimeToStationary: 0.5
 --- !u!1 &175594
 GameObject:
   m_ObjectHideFlags: 0

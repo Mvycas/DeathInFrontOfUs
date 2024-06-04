@@ -40,12 +40,32 @@ public class UIManager : MonoBehaviour
         
         // find panels 
         mainMenuPanel = GameObject.FindGameObjectWithTag("Menu_UI");
+        gameOverPanel = GameObject.FindGameObjectWithTag("GameOverUI");
+        victoryPanel = GameObject.FindGameObjectWithTag("VictoryPanel");
 
-
-        // find buttons
-        Button newGameButton = GameObject.FindGameObjectWithTag("NewGameButton").GetComponent<Button>();
-        newGameButton.onClick.RemoveAllListeners(); // to avoid duplicates
-        newGameButton.onClick.AddListener(() => GameStateManager.Instance.NewGame());
+        
+        
+        GameObject[] newGameButtons = GameObject.FindGameObjectsWithTag("NewGameButton");
+        foreach (GameObject buttonObject in newGameButtons)
+        {
+            Button newGameButton = buttonObject.GetComponent<Button>();
+            if (newGameButton != null)
+            {
+                newGameButton.onClick.RemoveAllListeners();
+                newGameButton.onClick.AddListener(() => GameStateManager.Instance.NewGame());
+            }
+        }
+        
+        GameObject[] exitGameButtons = GameObject.FindGameObjectsWithTag("ExitGameButton");
+        foreach (GameObject buttonObject in exitGameButtons)
+        {
+            Button exitGameButton = buttonObject.GetComponent<Button>();
+            if (exitGameButton != null)
+            {
+                exitGameButton.onClick.RemoveAllListeners();
+                exitGameButton.onClick.AddListener(() => GameStateManager.Instance.ExitGame());
+            }
+        }
         
     }
 
@@ -78,9 +98,8 @@ public class UIManager : MonoBehaviour
     public void DeactivateAllPanels()
     {
         mainMenuPanel.SetActive(false);
-        //mainMenuPanel.SetActive(false);
-       // gameOverPanel.SetActive(false);
-        //victoryPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        victoryPanel.SetActive(false);
     }
 
     private void ActivatePanel(GameObject panel)

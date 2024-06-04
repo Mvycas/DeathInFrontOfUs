@@ -30,6 +30,10 @@ namespace HealthSystem
                 OnDeath?.Invoke(); // Trigger the death event
             }
         }
+        public float GetCurrentHealth()
+        {
+            return CurrentHealth;
+        }
 
         public void Heal(float amount)
         {

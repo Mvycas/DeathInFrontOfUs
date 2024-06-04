@@ -10,7 +10,7 @@ namespace AISystem
             : base(_zombie, _agent, _anim, _player)
         {
             name = AI_STATE.CHASE;
-            agent.speed = 5;
+            agent.speed = 1;
             agent.isStopped = false;
         }
 
@@ -23,6 +23,13 @@ namespace AISystem
         public override void Update()
         {
             agent.SetDestination(player.position);
+            Vector3 direction = player.position - zombie.transform.position;
+            float angle = Vector3.Angle(direction, zombie.transform.forward);
+            direction.y = 0;
+                
+            zombie.transform.rotation = Quaternion.Slerp(zombie.transform.rotation, Quaternion.LookRotation(direction),
+                Time.deltaTime * 2);
+            
             if (agent.hasPath)
             {
                 if (CanAttackPlayer())

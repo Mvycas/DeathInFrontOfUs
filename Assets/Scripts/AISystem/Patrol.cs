@@ -15,7 +15,7 @@ namespace ObjectPoolingSystem.AISystem
             : base(_zombie, _agent, _anim, _player)
         {
             name = AI_STATE.PATROL;
-            agent.speed = 1;
+            agent.speed = 0.5f;
             agent.isStopped = false;
 
             // init the list of available waypoints, excluding the current index

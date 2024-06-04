@@ -50,9 +50,10 @@ public class GameStateManager : MonoBehaviour
             cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
         }
 
-        // Check if this is truly the first load of the game
+        // to check if this is truly the first load of the game
         if (!_gameStarted) {
             _gameStarted = true;  
+            cameraController.SetPause(true);
             CurrentState = GameState.GameStart;
         } else {
             CurrentState = GameState.Playing;
@@ -126,6 +127,12 @@ public class GameStateManager : MonoBehaviour
     public void Victory()
     {
         CurrentState = GameState.Victory;
+    }
+    
+    public void ExitGame()
+    {
+        Debug.Log("QUITTING GAME");
+        Application.Quit();
     }
     
 }

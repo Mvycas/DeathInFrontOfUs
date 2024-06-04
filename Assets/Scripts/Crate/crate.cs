@@ -10,8 +10,8 @@ using Random = UnityEngine.Random;
 public class crate : MonoBehaviour
 {
     public PlayerInputConfig playerInput;
-    private bool _containAntiViral;
-    private bool _wasSearched;
+    public bool containAntiViral;
+    public bool wasSearched;
     private float _searchDuration;
     public Image progressBar;
     private bool _isSearching;
@@ -21,29 +21,24 @@ public class crate : MonoBehaviour
     void Awake()
     {
         _uiCanvas = GameObject.FindGameObjectWithTag("InteractableUI");
-        //Debug.Log(_uiCanvas);
-        //Debug.Log(_uiCanvas.IsDestroyed());
     }
     void Start()
     {
         _uiCanvas.SetActive(false);
-        _searchDuration = 5f; //Random.Range(3F, 8F);
+        _searchDuration = Random.Range(3F, 8F);
         progressBar.fillAmount = 0;
         _isSearching = false;
-        _wasSearched = false;
+        wasSearched = false;
         _isWithinCollider = false;
-        _containAntiViral = true; //  _containAntiViral = Random.value > 0.5;     
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !_wasSearched)
+        if (other.CompareTag("Player") && !wasSearched)
         {
-           // Debug.Log(_uiCanvas);
             _uiCanvas.SetActive(true);
             _isWithinCollider = true;
-            //canvasManager.DisplayInteractableCanvas(true);
         }
     }
 
@@ -64,7 +59,7 @@ public class crate : MonoBehaviour
 
     void Update()
     {
-        if (playerInput.SearchInput && !_isSearching && !_wasSearched && _isWithinCollider)
+        if (playerInput.SearchInput && !_isSearching && !wasSearched && _isWithinCollider)
         {
             StartCoroutine(SearchCrate());
         }
@@ -88,13 +83,16 @@ public class crate : MonoBehaviour
         }
         EndSearch();
         progressBar.fillAmount = 0;
-        _wasSearched = true;
+        wasSearched = true;
         _isSearching = false;
     }
 
     private void EndSearch()
     {
-        // here to send notification to finite state machine / game manager that controls the game state.
-        Debug.Log(_containAntiViral ? "Found antivirals!" : "No antivirals here.");
+        if (containAntiViral)
+        {
+            GameStateManager.Instance.Victory();
+        }
+        Debug.Log(containAntiViral ? "Found antivirals!" : "No antivirals here.");
     }
 }

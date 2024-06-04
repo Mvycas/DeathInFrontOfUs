@@ -29,7 +29,7 @@ namespace AISystem
         //zombie:
         private float visualDistance = 25.0f;
         private float visualAngle = 180.0f; //Yes my zombies have wide angle eyes ;))))
-        private float attackDist = 2.0f;
+        private float attackDist = 1.0f;
 
         public AIState(GameObject _zombie, NavMeshAgent _agent, Animator _anim, Transform _player)
         {

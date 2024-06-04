@@ -23,6 +23,11 @@ namespace HealthSystem
             Debug.Log(damage);
         }
 
+        public float getHealth()
+        {
+            return _health.GetCurrentHealth();
+        }
+
         // The Die method is abstract - it will be implemented differently by every subclass
         protected abstract void Die();
     }

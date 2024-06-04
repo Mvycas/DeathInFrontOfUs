@@ -1,25 +1,39 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace HealthSystem
 {
     public class Player : Character
     {
+        private Animator anim; 
+        private PlayerInput input;
+
         protected override void Awake()
         {
-            // this calls characters awake method
-            // It is required! idk why compiler greyed it out,
-            // without this call it would be null pointer smth
-           
-            base.Awake(); 
-            
-            // Player-specific initialization to implement later on
+            base.Awake();
+            anim = GetComponent<Animator>();
+            input = GetComponent<PlayerInput>();
         }
 
         protected override void Die()
         {
             Debug.Log("Player died!");
-            Destroy(gameObject);
-            // animations? // death UI? To continue and respawn or to quit game? // Sound effects?
+            if (anim != null)
+            {
+                StartCoroutine(HandleDeathAnimation());
+            }
+
+        }
+        private IEnumerator HandleDeathAnimation()
+        {
+            input.enabled = false; 
+            anim.SetBool("death", true);
+
+            yield return new WaitForSeconds(3f);
+            // death animation should be finished in 3 sec, call gameOver :(
+            GameStateManager.Instance.GameOver();
         }
     }
 }

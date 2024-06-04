@@ -8,6 +8,13 @@ TagManager:
   - Zombie
   - InteractableUI
   - Waypoint
+  - MainMenu
+  - SpawnPoints
+  - NewGameButton
+  - StartMenu
+  - VictoryUI
+  - GameOverUI
+  - Menu_UI
   layers:
   - Default
   - TransparentFX

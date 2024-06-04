@@ -22,16 +22,6 @@ namespace MovementSystem
         private bool _isJumping;
         private bool _isPaused;
 
-        private void OnEnable()
-        {
-            GameEvents.instance.onPause.AddListener(HandlePauseToggle);
-        }
-
-        private void OnDisable()
-        {
-            GameEvents.instance.onPause.RemoveListener(HandlePauseToggle);
-        }
-
         private void Awake()
         {
             _animator = GetComponent<Animator>();

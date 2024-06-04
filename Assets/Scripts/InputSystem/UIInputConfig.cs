@@ -19,7 +19,6 @@ namespace InputSystem
 
         private void OnEnable()
         {
-            // need to reformat some code and put check if the game state is paused or not...
             menuNavigateAction.Enable();
             menuSelectAction.Enable();
         }

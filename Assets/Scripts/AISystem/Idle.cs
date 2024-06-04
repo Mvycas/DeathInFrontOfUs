@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using AISystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,11 +26,9 @@ namespace ObjectPoolingSystem.AISystem
                 nextState = new Chase(zombie, agent, anim, player);
                 stage = EVENT.EXIT;
             }
-            if (Random.Range(0, 100) < 10)
-            {
-                nextState = new Patrol(zombie, agent, anim, player);
-                stage = EVENT.EXIT;
-            } 
+            nextState = new Patrol(zombie, agent, anim, player);
+            stage = EVENT.EXIT;
+            
         }
 
         public override void Exit()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3375094}
   - component: {fileID: 2371982}
   - component: {fileID: 6561772}
+  - component: {fileID: 4444297449835929371}
   m_Layer: 0
   m_Name: Struct_Billboard_C_LOD0
   m_TagString: Untagged
@@ -105,6 +106,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.0082242, y: 5.3769717, z: 0.59135145}
   m_Center: {x: 0.016271472, y: 2.6900327, z: -0.05798342}
+--- !u!208 &4444297449835929371
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102108}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5040001, y: 2.6880002, z: 0.296}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.016, y: 2.69, z: -0.058000002}
+  m_TimeToStationary: 0.5
 --- !u!1 &137056
 GameObject:
   m_ObjectHideFlags: 0

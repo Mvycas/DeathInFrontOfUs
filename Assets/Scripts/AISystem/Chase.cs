@@ -1,8 +1,8 @@
-﻿using System.IO.Pipes;
+﻿using ObjectPoolingSystem.AISystem;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ObjectPoolingSystem.AISystem
+namespace AISystem
 {
     public class Chase: AIState
     {

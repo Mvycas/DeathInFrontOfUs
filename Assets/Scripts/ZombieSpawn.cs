@@ -3,9 +3,14 @@ using ObjectPoolingSystem;
 
 public class ZombieSpawnManager : MonoBehaviour
 {
-    public ObjectPool zombiePool; 
-    public Transform[] spawnPoints; 
-    public int maxZombies = 50; 
+    public ObjectPool zombiePool;
+    private Transform[] spawnPoints;
+    public int maxZombies = 50;
+
+    private void Start()
+    {
+        spawnPoints = GameEnvironment.Singleton.SpawnPoints.ToArray();
+    }
 
     private void Update()
     {
@@ -18,13 +23,18 @@ public class ZombieSpawnManager : MonoBehaviour
 
     private void SpawnZombie()
     {
+        if (spawnPoints == null || spawnPoints.Length == 0)
+        {
+            Debug.LogError("Spawn points are not initialized or are empty.");
+            return;
+        }
+
         GameObject zombie = zombiePool.GetPooledObject();
         if (zombie != null)
         {
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             zombie.transform.position = spawnPoint.position;
             zombie.transform.rotation = spawnPoint.rotation;
-
             zombie.SetActive(true);
         }
     }

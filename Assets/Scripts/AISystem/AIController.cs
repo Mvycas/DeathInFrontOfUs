@@ -1,9 +1,8 @@
-﻿using System;
+﻿using ObjectPoolingSystem.AISystem;
 using UnityEngine;
-using Random = UnityEngine.Random;
 using UnityEngine.AI;
 
-namespace ObjectPoolingSystem.AISystem
+namespace AISystem
 {
     public class AIController : MonoBehaviour
     {

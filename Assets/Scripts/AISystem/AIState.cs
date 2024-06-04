@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace ObjectPoolingSystem.AISystem
+namespace AISystem
 {
     public class AIState
     {

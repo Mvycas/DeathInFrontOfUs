@@ -1,8 +1,9 @@
 ﻿using Interfaces;
+using ObjectPoolingSystem.AISystem;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ObjectPoolingSystem.AISystem
+namespace AISystem
 {
     public class Attack: AIState
     {
@@ -34,7 +35,7 @@ namespace ObjectPoolingSystem.AISystem
 
             if (!CanAttackPlayer())
             {
-                nextState = new Idle(zombie, agent, anim, player);
+                nextState = new Patrol(zombie, agent, anim, player);
                 stage = EVENT.EXIT;
             }
         }

@@ -13,11 +13,13 @@ This blog post will shortly review some of the following features and systems th
 - Arrow indicator
 - UI panels
 
+The focus was set on finishing the game loop, so to make the game have some sort of state - if the player dies, 
+the system should eventually stop the game (Time.timeScale = 0) and show certain UI.
+
 ## Zombie AI
 
-This time the focus were on finishing the game loop, so to make the game have some sort of state so if the player dies, for example, 
-the system would eventually stop the game (Time.timeScale = 0) and show certain UI. The zombie Ai system has been developed with a help of Unity Course.
-(Link in sources) That was a great help in developing AI that I could say is a decent one. (still not a very smart one :)) 
+The zombie Ai system has been developed after completing Unity AI Course (Link in sources).
+That was a great help in developing AI that I could mark as a decent one. (still not a very smart one :)) 
 
 The AI behavior for zombies is managed by finite state machine (FSM). 
 

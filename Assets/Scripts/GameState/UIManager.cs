@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,6 +13,10 @@ namespace GameState
         public GameObject gameOverPanel;
         public GameObject victoryPanel;
 
+        public Button FirstSelectedButtonForMainMenu;
+        public Button FirstSelectedButtonForGameOver;
+        public Button FirstSelectedButtonForVictory;
+        
         private void Awake()
         {
             if (Instance != null)
@@ -44,6 +49,10 @@ namespace GameState
             gameOverPanel = GameObject.FindGameObjectWithTag("GameOverUI");
             victoryPanel = GameObject.FindGameObjectWithTag("VictoryPanel");
 
+            // find buttons
+            FirstSelectedButtonForMainMenu = mainMenuPanel.GetComponentInChildren<Button>();
+            FirstSelectedButtonForGameOver = gameOverPanel.GetComponentInChildren<Button>();
+            FirstSelectedButtonForVictory = victoryPanel.GetComponentInChildren<Button>();
         
         
             GameObject[] newGameButtons = GameObject.FindGameObjectsWithTag("NewGameButton");
@@ -68,6 +77,17 @@ namespace GameState
                 }
             }
         
+        }
+        
+        private void SetInitialButtonFocus(GameObject panel)
+        {
+            EventSystem.current.SetSelectedGameObject(null); 
+            if (panel == mainMenuPanel && FirstSelectedButtonForMainMenu != null)
+                FirstSelectedButtonForMainMenu.Select();
+            else if (panel == gameOverPanel && FirstSelectedButtonForGameOver != null)
+                FirstSelectedButtonForGameOver.Select();
+            else if (panel == victoryPanel && FirstSelectedButtonForVictory != null)
+                FirstSelectedButtonForVictory.Select();
         }
 
         public void UpdateUI(GameStateManager.GameState state)
@@ -105,6 +125,8 @@ namespace GameState
         {
             DeactivateAllPanels();
             panel.SetActive(true);
+            SetInitialButtonFocus(panel);
+
         }
     }
 }

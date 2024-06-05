@@ -6,6 +6,5 @@ namespace ScriptableCharactersData
     public class CharacterData : ScriptableObject
     {
         public float maxHealth = 100;
-        // add more character properties later on such as dmg... exp.. mana maybe??
     }
 }

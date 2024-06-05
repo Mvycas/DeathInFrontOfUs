@@ -1,98 +1,99 @@
-using System;
 using System.Collections;
+using GameState;
 using InputSystem;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class crate : MonoBehaviour
+namespace Crate
 {
-    public PlayerInputConfig playerInput;
-    public bool containAntiViral;
-    public bool wasSearched;
-    private float _searchDuration;
-    public Image progressBar;
-    private bool _isSearching;
-    private bool _isWithinCollider;
-    private GameObject _uiCanvas;
+    public class crate : MonoBehaviour
+    {
+        public PlayerInputConfig playerInput;
+        public bool containAntiViral;
+        public bool wasSearched;
+        private float _searchDuration;
+        public Image progressBar;
+        private bool _isSearching;
+        private bool _isWithinCollider;
+        private GameObject _uiCanvas;
 
-    void Awake()
-    {
-        _uiCanvas = GameObject.FindGameObjectWithTag("InteractableUI");
-    }
-    void Start()
-    {
-        _uiCanvas.SetActive(false);
-        _searchDuration = Random.Range(3F, 8F);
-        progressBar.fillAmount = 0;
-        _isSearching = false;
-        wasSearched = false;
-        _isWithinCollider = false;
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && !wasSearched)
+        void Awake()
         {
-            _uiCanvas.SetActive(true);
-            _isWithinCollider = true;
+            _uiCanvas = GameObject.FindGameObjectWithTag("InteractableUI");
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        void Start()
         {
-          _uiCanvas.SetActive(false);
+            _uiCanvas.SetActive(false);
+            _searchDuration = Random.Range(3F, 8F);
+            progressBar.fillAmount = 0;
+            _isSearching = false;
+            wasSearched = false;
             _isWithinCollider = false;
-            if (_isSearching)
+        
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player") && !wasSearched)
             {
-                StopCoroutine(SearchCrate());
-                progressBar.fillAmount = 0;
-                _isSearching = false;
+                _uiCanvas.SetActive(true);
+                _isWithinCollider = true;
             }
         }
-    }
 
-    void Update()
-    {
-        if (playerInput.SearchInput && !_isSearching && !wasSearched && _isWithinCollider)
+        private void OnTriggerExit(Collider other)
         {
-            StartCoroutine(SearchCrate());
-        }
-    }
-
-    private IEnumerator SearchCrate()
-    {
-        _isSearching = true;
-        float elapsedTime = 0;
-        while (elapsedTime < _searchDuration)
-        {
-            if (!playerInput.SearchInput || !_isWithinCollider) 
+            if (other.CompareTag("Player"))
             {
-                progressBar.fillAmount = 0;
-                _isSearching = false;
-                yield break;
+                _uiCanvas.SetActive(false);
+                _isWithinCollider = false;
+                if (_isSearching)
+                {
+                    StopCoroutine(SearchCrate());
+                    progressBar.fillAmount = 0;
+                    _isSearching = false;
+                }
             }
-            elapsedTime += Time.deltaTime;
-            progressBar.fillAmount = elapsedTime / _searchDuration;
-            yield return null;
         }
-        EndSearch();
-        progressBar.fillAmount = 0;
-        wasSearched = true;
-        _isSearching = false;
-    }
 
-    private void EndSearch()
-    {
-        if (containAntiViral)
+        void Update()
         {
-            GameStateManager.Instance.Victory();
+            if (playerInput.SearchInput && !_isSearching && !wasSearched && _isWithinCollider)
+            {
+                StartCoroutine(SearchCrate());
+            }
         }
-        Debug.Log(containAntiViral ? "Found antivirals!" : "No antivirals here.");
+
+        private IEnumerator SearchCrate()
+        {
+            _isSearching = true;
+            float elapsedTime = 0;
+            while (elapsedTime < _searchDuration)
+            {
+                if (!playerInput.SearchInput || !_isWithinCollider) 
+                {
+                    progressBar.fillAmount = 0;
+                    _isSearching = false;
+                    yield break;
+                }
+                elapsedTime += Time.deltaTime;
+                progressBar.fillAmount = elapsedTime / _searchDuration;
+                yield return null;
+            }
+            EndSearch();
+            progressBar.fillAmount = 0;
+            wasSearched = true;
+            _isSearching = false;
+        }
+
+        private void EndSearch()
+        {
+            if (containAntiViral)
+            {
+                GameStateManager.Instance.Victory();
+            }
+            Debug.Log(containAntiViral ? "Found antivirals!" : "No antivirals here.");
+        }
     }
 }

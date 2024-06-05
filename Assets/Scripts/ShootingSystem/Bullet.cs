@@ -19,41 +19,19 @@ namespace ShootingSystem
         }
         private void Start()
         {
-            // Store the initial spawn position of the bullet
             _spawnPosition = transform.position;
         }
 
         private void Update()
         {
-            // Update the timer
             _timeSinceActivated += Time.deltaTime;
 
-            // Check if the bullet has existed longer than its lifetime
             if (_timeSinceActivated >= lifetime)
             {
                 DisableBullet();
             }
         }
 
-        //private void OnCollisionEnter(Collision collision)
-        //{
-        // Get the character component from the collided object
-        // If character is detected, give damage // should be enemy later on
-        //  Character character = collision.collider.GetComponent<Character>();
-        //  if (character != null)
-        //  {
-        // Apply damage to the character
-        //    character.ApplyDamage(damageAmount);
-        //  }
-
-        // Destroy the bullet on collision 
-        // Not sure, but this supposed to destroy bullet on collision event,
-        // so if it collides with another object that has rigidbody.
-        // Of course if it collides with character, it applies the damage first (as you can see in the above code)
-        // Ask Jakob if it is fine this way. Not sure of code quality ... hh
-        //  Destroy(gameObject);
-        // }
-   
         private void OnCollisionEnter(Collision collision)
         {
             // Only get the Character component if the collision object has the correct tag
@@ -73,14 +51,12 @@ namespace ShootingSystem
                 // Destroy the gore effect after it has finished
                 Destroy(goreEffectInstance, ps.main.duration);
             }
-
             // Deactivate the bullet in any case
             DisableBullet();
         }
 
         private void DisableBullet()
         {
-            // Deactivate the bullet
             gameObject.SetActive(false);
         }
     }

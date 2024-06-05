@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using GameState;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

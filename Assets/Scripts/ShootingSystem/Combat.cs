@@ -7,8 +7,6 @@ namespace ShootingSystem
     [RequireComponent(typeof(Animator))]
     public class Combat : MonoBehaviour
     {
-        private const string AttackTriggerName = "Attack";
-        private const string SpecialAttackTriggerName = "Ability";
 
         private Animator _animator;
         private PlayerInputConfig _playerInput;
@@ -63,11 +61,6 @@ namespace ShootingSystem
             gun.muzzleFlashObject.SetActive(false);
             AttackInProgress = false;
             _timestamp = 0; 
-        }
-
-        private void SpecialAttack()
-        {
-            _animator.SetTrigger(SpecialAttackTriggerName);
         }
     }
 }

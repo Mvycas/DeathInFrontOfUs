@@ -119,7 +119,7 @@ The object diffusion system was hardest to implement and it is far the most inte
 
 To begin with, a lit surface shader was created within shader graph editor, which can be seen in the picture below:
 
-[INSERT PICTURE LATER ON]
+![Shader graph editor](https://github.com/Mvycas/DeathInFrontOfUs/blob/main/Blog/SHADER.PNG)
 
 At first I tried to re-create a lit surface shader, that would take the exactly same values and textures as URP/Lit shader would:
 
@@ -146,9 +146,14 @@ This then goes into alpha channel which controls the visibility of the shader.
 
 ### Visibility controller
 
-After creating this shader, specific buildings that had to be obstructed were modified by changing URP/Lit shader to the one that "HeightBasedTransparnecy" shader 
+After creating this shader, specific buildings that had to be obstructed were modified by changing their materials URP/Lit shader to the one that "HeightBasedTransparnecy" shader.
 
 With this shader, the heightThreshold value can be controlled by a custom script (manager) when certain conditions are met.
+
+![Church](https://github.com/Mvycas/DeathInFrontOfUs/blob/main/Blog/SHADER_CHURCH.png)
+
+![Church obstructed](https://github.com/Mvycas/DeathInFrontOfUs/blob/main/Blog/SHADER_CHURCH_obs.png)
+
 In this case it is being controlled by the BuildingVisibilityController.cs. It is attached to a specific object along with a collider 
 (isTrigger must be set) which controls the visibility of the building materials by adjusting the height threshold for each of them. 
 This is controlled based on whether the player is nearby or inside the building. (Colliders)
@@ -257,6 +262,8 @@ It Interpolates position and rotation between these two cameras.
 The important thing why I wanted to mention this feature within the blog post is that the time used here for interpolation is an unscaled time. 
 It means that when we actually pause the game by setting Time.timeScale to 0, the interpolation between the cameras during the pause state would not interrupt and brake. 
 It would finish interpolating while pretty much every other process within the game would be at a stop/pause. 
+
+![Shader graph editor](https://github.com/Mvycas/DeathInFrontOfUs/blob/main/Blog/menu.png)
 
 
 # Sources:

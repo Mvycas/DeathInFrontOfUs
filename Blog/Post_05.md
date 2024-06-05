@@ -364,7 +364,10 @@ Fun fact, the tree inside the church is accidentaly misplaced, but I left it the
 # Sources:
 
 - https://learn.unity.com/course/artificial-intelligence-for-beginners
+  
+# Content:
 
+![Meme](https://github.com/Mvycas/DeathInFrontOfUs/blob/main/Blog/meme.png)
 
 
 

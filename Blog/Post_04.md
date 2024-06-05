@@ -1,5 +1,5 @@
 ---
-Title: "Blog Post 4: Development continues"
+Title: "Blog Post 4 The Development continues: Camera obstruction and control systems"
 Post creation date: "17-04-2024"
 Author: Martynas Vycas
 ---

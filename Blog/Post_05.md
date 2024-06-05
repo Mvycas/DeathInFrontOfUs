@@ -367,7 +367,7 @@ Fun fact, the tree inside the church is accidentaly misplaced, but I left it the
   
 # Content:
 
-![Meme](https://github.com/Mvycas/DeathInFrontOfUs/blob/main/Blog/meme.png)
+![Meme](https://github.com/Mvycas/DeathInFrontOfUs/blob/main/Blog/meme.jpg)
 
 
 

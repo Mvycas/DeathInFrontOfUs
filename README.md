@@ -12,15 +12,19 @@
 ## 
 
 
-# Sources:
+## Sources:
 
 - https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.firstordefault?view=net-8.0
 
 - https://docs.unity3d.com/ScriptReference/GameObject-activeInHierarchy.html
 
 - https://www.kodeco.com/847-object-pooling-in-unity
+  
+- https://docs.unity3d.com/Packages/com.unity.shadergraph@6.9/manual/Sample-Texture-2D-Node.html
+  
+- https://forum.unity.com/threads/how-to-replicate-the-lwrp-standard-shader-in-shadergraph.539089/
 
-# Resources used: 
+## Resources/Assets used: 
 
 - Megan (Player character): https://www.mixamo.com/#/?page=1&query=megan&type=Character
 - Animations: https://www.mixamo.com/
@@ -29,7 +33,9 @@
 - Trees: https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076
 - Submachine Gun (UZI): https://assetstore.unity.com/packages/3d/props/guns/submachine-gun-20746
 - Zombies: https://assetstore.unity.com/packages/3d/characters/humanoids/zombie-30232
+- Medical crate: https://assetstore.unity.com/packages/3d/props/sci-fi-crate-low-poly-free-urp-173856
 
+##
 
 <p align="center">
   <a href="https://i.ibb.co/c66XcxP/DALL-E-2024-02-23-02-56-34-Create-a-cover-image-for-a-video-game-titled-Death-in-Front-of-Us-blendin.png">

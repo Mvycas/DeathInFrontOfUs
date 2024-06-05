@@ -34,6 +34,7 @@
 - Submachine Gun (UZI): https://assetstore.unity.com/packages/3d/props/guns/submachine-gun-20746
 - Zombies: https://assetstore.unity.com/packages/3d/characters/humanoids/zombie-30232
 - Medical crate: https://assetstore.unity.com/packages/3d/props/sci-fi-crate-low-poly-free-urp-173856
+- Muzzle flash: https://assetstore.unity.com/packages/vfx/particles/war-fx-5669
 
 ##
 

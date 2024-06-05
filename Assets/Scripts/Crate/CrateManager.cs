@@ -6,7 +6,7 @@ namespace Crate
     public class CrateManager : MonoBehaviour
     {
         public static CrateManager Instance;
-        public int numVials = 2; // No. of crates that has vials
+        public int numVials = 14; // No. of crates that has vials
         private List<crate> allCrates = new List<crate>();
 
         void Awake()

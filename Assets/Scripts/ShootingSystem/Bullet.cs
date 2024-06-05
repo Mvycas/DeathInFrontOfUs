@@ -42,9 +42,12 @@ namespace ShootingSystem
                 {
                     character.ApplyDamage(damageAmount);
                 }
+                Vector3 effectPosition = collision.contacts[0].point - collision.contacts[0].normal * 0.1f;  
 
                 // Instantiate the gore effect at the collision point and orient it correctly
-                var goreEffectInstance = Instantiate(goreEffectPrefab, collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].normal));
+                var goreEffectInstance = Instantiate(goreEffectPrefab, effectPosition, Quaternion.LookRotation(collision.contacts[0].normal));
+                goreEffectInstance.transform.SetParent(collision.transform);
+                goreEffectInstance.transform.localPosition = collision.transform.InverseTransformPoint(collision.contacts[0].point);
                 var ps = goreEffectInstance.GetComponent<ParticleSystem>();
                 ps.Play();
 

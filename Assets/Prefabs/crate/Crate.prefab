@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 0}
+  containAntiViral: 0
+  wasSearched: 0
   progressBar: {fileID: 0}
 --- !u!135 &3065321726128227115
 SphereCollider:

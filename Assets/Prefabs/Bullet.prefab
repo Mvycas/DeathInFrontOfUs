@@ -150,6 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTravelDistance: 200
   damageAmount: 30
-  goreEffectPrefab: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346,
+  goreEffectPrefab: {fileID: 5895031916036034047, guid: 3153c9b826c2a7043be7d56dbbf07f9b,
     type: 3}
   lifetime: 0.5

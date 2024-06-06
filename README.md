@@ -8,7 +8,7 @@
 - [Post 03 - The Odyssey Unfolds: Inside look at the First Chapters of 'DeathInFrontOfUs'](./Blog/Post_03.md)
 - [Post 04 - The Development continues: Camera obstruction and control systems](./Blog/Post_04.md)
 - [Post 05 - At the end of the journey](./Blog/Post_05.md)
-- [Post 06 - Gameplay and reflection](./Blog/Post_06.md)
+- [Post 06 - The end: Gameplay and more info behind the project](./Blog/Post_06.md)
   
 
 ## Sources:

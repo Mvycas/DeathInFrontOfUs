@@ -10,6 +10,8 @@ this game since I have added a webGL build and hosted it on Github pages.
 
 ## The gameplay
 
+https://www.youtube.com/watch?v=eQtBx0t3Po0
+
 [![Gameplay](https://img.youtube.com/vi/eQtBx0t3Po0/0.jpg)](https://www.youtube.com/watch?v=eQtBx0t3Po0 "Gameplay")
 
 ## The story 
@@ -46,8 +48,10 @@ The game was focused on Arcade machine platform, therefore there are things in g
 - UI navigation – W A S D / arrow keys / Enter
 
 ### Link to play the game:
+
+[[DIFOU-WEBGL]](https://mvycas.github.io/DIFOU-WEBGL/)
+
 ** the "win" and "game over" UI panels in the webGL build appear faulty resized. Not sure why. The panels were made for 1080p resolution and this is only happening for webGL build. WebGl is built for 1920x1080.
 
-[[LINK]](https://mvycas.github.io/DIFOU-WEBGL/)
 
 

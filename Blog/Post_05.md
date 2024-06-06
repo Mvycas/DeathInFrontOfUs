@@ -363,6 +363,10 @@ Things regarding the map was not implemented by me, such as physics, sound and e
 Within map I only changed some building structure and some object placements. Also I re-populated trees, because original ones were just beyond saving. (After conversion to URP their textures were completely broken)
 Fun fact, the tree inside the church is accidentaly misplaced, but I left it there because I think it adds up to the abandoned and dead city vibe.
 
+## Project structure / hierarchy
+![Hierarchy](https://github.com/Mvycas/DeathInFrontOfUs/blob/main/Blog/hierarchy.png)
+
+
 # Sources:
 
 - https://learn.unity.com/course/artificial-intelligence-for-beginners

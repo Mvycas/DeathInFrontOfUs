@@ -1,31 +1,62 @@
 using Crate;
 using UnityEngine;
+using UnityEngine.SceneManagement;  
 
 namespace NavigationSystem
 {
     public class ArrowIndicator : MonoBehaviour
     {
-        public Transform player;       
+        private Transform player;       
+        private Transform targetCrate;  
 
-        private Transform targetCrate;  // the nearest unopened crate
+        void Awake()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;  
+        }
 
-        public Transform objTransform;      // Reference to an obj that is attached to player.
-        // This is so that the arrow would not jump around when the player rotates,
-        // because the arrow is attached to the player.
+        void OnDestroy()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;  
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            FindPlayer();
+        }
+
+        void Start()
+        {
+            FindPlayer();
+        }
 
         void Update()
         {
-            targetCrate = CrateManager.Instance.GetNearestUnopenedCrate(player.position).transform;
+            if (player == null)
+            {
+                return;  
+            }
 
+            targetCrate = CrateManager.Instance.GetNearestUnopenedCrate(player.position).transform;
+           
             if (targetCrate != null)
             {
-                Vector3 targetDirection = targetCrate.position - objTransform.position;
-                targetDirection.y = 0f;
+                Vector3 targetDirection = targetCrate.position - player.position;
+                targetDirection.y = 0f;  
 
-                Quaternion targetRotation = Quaternion.LookRotation(targetDirection, objTransform.up); 
-            
+                Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
                 float targetYRotation = targetRotation.eulerAngles.y;
-                transform.rotation = Quaternion.Euler(90f, targetYRotation, 0f); 
+
+                transform.rotation = Quaternion.Euler(90f, targetYRotation, 0f);
+            }
+        }
+
+        private void FindPlayer()
+        {
+            GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerGameObject != null)
+            {
+                player = playerGameObject.transform;
             }
         }
     }

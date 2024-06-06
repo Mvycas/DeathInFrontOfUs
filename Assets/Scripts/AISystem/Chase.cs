@@ -10,7 +10,7 @@ namespace AISystem
             : base(_zombie, _agent, _anim, _player)
         {
             name = AI_STATE.CHASE;
-            agent.speed = 0.5f;
+            agent.speed = 0.3f;
             agent.isStopped = false;
         }
 

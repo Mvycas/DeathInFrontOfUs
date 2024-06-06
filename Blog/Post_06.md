@@ -17,8 +17,7 @@ There is a city, infested with most extraordinary zombies that can see you from 
 No one tried to enter this city as it would have been a suicide attempt. Well, one notable
 aspect of the city is that it contains medical crates, which were dropped by the army long 
 before the infection began.
-Then there is Megan, a lone survivor in this harsh world. Her only protection is a submachine gun 
-- a legacy passed down by her grandfather.
+Then there is Megan, a lone survivor in this harsh world. Her only protection is a submachine gun - a legacy passed down by her grandfather.
 Once she got bitten when helping other survivors and now she is highly dependent on the antibiotic
 vials that do extend her life. Unfortunately, those vials are scarce these days, and the only 
 place it could be possbily found is exactly this city. Will she survive?

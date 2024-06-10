@@ -1,5 +1,6 @@
 ﻿using InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace MovementSystem
 {
@@ -12,6 +13,8 @@ namespace MovementSystem
         [SerializeField] private float maxSpeed = 10f;
         [SerializeField] private float turnSpeed = 12f;
         [SerializeField] private float gravityMultiplier = 3.0f;
+        [SerializeField] private Camera playerCamera; 
+
 
         private Animator _animator;
         private CharacterController _characterController;
@@ -37,35 +40,54 @@ namespace MovementSystem
             HandleMovement(_playerInputConfig.MovementInput);
             HandleJump();
             HandleGravity();
+            HandleMouseRotation();
         }
-
-        public void HandlePauseToggle(bool isPaused)
+        
+        private void HandleMouseRotation()
         {
-            _isPaused = isPaused;
+            if (playerCamera == null) return;
 
-            if (_isPaused)
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            float distanceToPlane = Mathf.Abs(playerCamera.transform.position.y - transform.position.y);
+            Vector3 mouseWorldPosition = playerCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, distanceToPlane));
+            Vector3 direction = (mouseWorldPosition - transform.position);
+            direction.y = 0;  
+
+            if (direction.sqrMagnitude > 0.001f)
             {
-                _animator.SetFloat("input_X", 0);
-                _animator.SetFloat("input_Y", 0);
-                _animator.SetBool("jump", false);
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
             }
         }
 
         private void HandleMovement(Vector2 input)
         {
-            Vector3 moveDirection = new Vector3(input.x, 0f, input.y).normalized;
+            Vector3 cameraForward = playerCamera.transform.forward;
+            Vector3 cameraRight = playerCamera.transform.right;
+            cameraForward.y = cameraRight.y = 0;
+            cameraForward.Normalize();
+            cameraRight.Normalize();
 
-            if (moveDirection.magnitude > 0f)
+            Vector3 moveDirection = cameraForward * input.y + cameraRight * input.x;
+            moveDirection.Normalize(); 
+
+            Vector3 localMoveDirection = transform.InverseTransformDirection(moveDirection);
+            float forwardAmount = localMoveDirection.z;
+            float rightAmount = localMoveDirection.x;
+
+            if (moveDirection.magnitude > 0.01f)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
-                Vector3 movement = transform.forward * (maxSpeed * Time.deltaTime);
-                _characterController.Move(movement);
+                _characterController.Move(moveDirection * (maxSpeed * Time.deltaTime));
+                _animator.SetFloat("input_X", rightAmount);
+                _animator.SetFloat("input_Y", forwardAmount);
+            }
+            else
+            {
+                _animator.SetFloat("input_X", 0);
+                _animator.SetFloat("input_Y", 0);
             }
 
-            // Update animator with movement input
-            _animator.SetFloat("input_X", input.x);
-            _animator.SetFloat("input_Y", input.y);
+            Debug.Log($"input: {input.x}, {input.y} - move_dir: {moveDirection.magnitude}");
         }
 
         private void HandleJump()

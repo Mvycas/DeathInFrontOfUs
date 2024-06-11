@@ -12,6 +12,7 @@ namespace MovementSystem
         [SerializeField] private float jumpSpeed = 10f;
         [SerializeField] private float maxSpeed = 10f;
         [SerializeField] private float turnSpeed = 12f;
+        [SerializeField] private float moveAnimationSpeed = 40f;
         [SerializeField] private float gravityMultiplier = 3.0f;
         [SerializeField] private Camera playerCamera; 
 
@@ -72,24 +73,14 @@ namespace MovementSystem
             moveDirection.Normalize(); 
 
             Vector3 localMoveDirection = transform.InverseTransformDirection(moveDirection);
-            float forwardAmount = localMoveDirection.z;
-            float rightAmount = localMoveDirection.x;
+            float forwardAmount = Mathf.Lerp(_animator.GetFloat("input_Y"), localMoveDirection.z, moveAnimationSpeed * Time.deltaTime);
+            float rightAmount = Mathf.Lerp(_animator.GetFloat("input_X"), localMoveDirection.x, moveAnimationSpeed * Time.deltaTime);
 
-            if (moveDirection.magnitude > 0.01f)
-            {
-                _characterController.Move(moveDirection * (maxSpeed * Time.deltaTime));
-                _animator.SetFloat("input_X", rightAmount);
-                _animator.SetFloat("input_Y", forwardAmount);
-            }
-            else
-            {
-                _animator.SetFloat("input_X", 0);
-                _animator.SetFloat("input_Y", 0);
-            }
-
-            Debug.Log($"input: {input.x}, {input.y} - move_dir: {moveDirection.magnitude}");
+            _characterController.Move(moveDirection * (maxSpeed * Time.deltaTime));
+            _animator.SetFloat("input_X", rightAmount);
+            _animator.SetFloat("input_Y", forwardAmount);
         }
-
+        
         private void HandleJump()
         {
             bool isCurrentlyGrounded = CheckIsGrounded();

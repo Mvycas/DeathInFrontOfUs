@@ -25,7 +25,6 @@ public class ZombieSpawnManager : MonoBehaviour
     {
         if (spawnPoints == null || spawnPoints.Length == 0)
         {
-            Debug.LogError("Spawn points are not initialized or are empty.");
             return;
         }
 

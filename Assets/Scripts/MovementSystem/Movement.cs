@@ -85,31 +85,29 @@ namespace MovementSystem
         {
             bool isCurrentlyGrounded = CheckIsGrounded();
     
-            // Handle the start of the jump
             if (_playerInputConfig.JumpInput && isCurrentlyGrounded && !_isJumping)
             {
                 _verticalVelocity = jumpSpeed;
                 _isJumping = true;
-                if (!_animator.GetBool("jump")) // Only set if not already jumping
+                if (!_animator.GetBool("jump")) 
                 {
-                    _animator.SetBool("jump", true); // Start the jump animation
+                    _animator.SetBool("jump", true); 
                 }
             }
-            else if (_isJumping && isCurrentlyGrounded) // Handle the end of the jump
+            else if (_isJumping && isCurrentlyGrounded) 
             {
                 _isJumping = false;
-                if (_animator.GetBool("jump")) // Only set if currently jumping
+                if (_animator.GetBool("jump")) 
                 {
-                    _animator.SetBool("jump", false); // End the jump animation
+                    _animator.SetBool("jump", false); 
                 }
             }
         }
 
         private bool CheckIsGrounded()
         {
-            // Raycast down to check for ground 
             RaycastHit hit;
-            float checkDistance = 0.35f; // Should be slightly more than the height of the character's step offset
+            float checkDistance = 0.35f; 
             bool isGrounded = Physics.Raycast(transform.position, -Vector3.up, out hit, checkDistance);
 
             return isGrounded;

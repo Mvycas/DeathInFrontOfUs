@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 4436478753813888877}
   m_Layer: 0
   m_Name: Base HumanLArmUpperarm
-  m_TagString: Untagged
+  m_TagString: bodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 6483019246841574833}
   m_Layer: 0
   m_Name: Base HumanRCalf
-  m_TagString: Untagged
+  m_TagString: bodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -812,6 +812,7 @@ GameObject:
   - component: {fileID: 2932675065898688383}
   - component: {fileID: 5984130418091972177}
   - component: {fileID: 6655429704420900254}
+  - component: {fileID: 2162840556079187340}
   m_Layer: 0
   m_Name: Zombie3
   m_TagString: Zombie
@@ -833,7 +834,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6201095571783922607}
-  - {fileID: 6915863935060190749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3568628872616989892
@@ -866,8 +866,8 @@ Rigidbody:
   m_GameObject: {fileID: 4803014352389650695}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 45
+  m_AngularDrag: 10
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -903,8 +903,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
-  m_Height: 2
+  m_Radius: 0.3
+  m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2932675065898688383
@@ -920,6 +920,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: a684659f2e2d41e48a016134147c03ef, type: 2}
+  goreEffectPrefab: {fileID: 1834194341294532, guid: d5f26854a8904624c8073139cd2eb346,
+    type: 3}
+  takenDamageAmount: 10
+  knockbackForce: 1.5
+  knockbackDuration: 0.3
 --- !u!114 &5984130418091972177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,7 +947,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.4
-  m_Speed: 0.1
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -954,45 +959,13 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!1 &4956532458698703312
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6915863935060190749}
-  - component: {fileID: 1216688472153998210}
-  m_Layer: 0
-  m_Name: Zombie1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6915863935060190749
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4956532458698703312}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8429865231615740692}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &1216688472153998210
+--- !u!137 &2162840556079187340
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4956532458698703312}
+  m_GameObject: {fileID: 4803014352389650695}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1200,7 +1173,7 @@ GameObject:
   - component: {fileID: 7686228968629508592}
   m_Layer: 0
   m_Name: Base HumanRArmForearm
-  m_TagString: Untagged
+  m_TagString: bodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1327,7 +1300,7 @@ GameObject:
   - component: {fileID: 7102427373649206859}
   m_Layer: 0
   m_Name: Base HumanRArmUpperarm
-  m_TagString: Untagged
+  m_TagString: bodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1521,7 +1494,7 @@ GameObject:
   - component: {fileID: 956512202495264301}
   m_Layer: 0
   m_Name: Base HumanHead
-  m_TagString: Untagged
+  m_TagString: bodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1591,7 +1564,7 @@ GameObject:
   - component: {fileID: 5451498026538668516}
   m_Layer: 0
   m_Name: Base HumanLArmForearm
-  m_TagString: Untagged
+  m_TagString: bodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1846,7 +1819,7 @@ GameObject:
   - component: {fileID: 5840514889789671829}
   m_Layer: 0
   m_Name: Base HumanLLegCalf
-  m_TagString: Untagged
+  m_TagString: bodyPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -10,7 +10,6 @@ using UnityEngine;
         [SerializeField] private Transform pauseViewTransform;
         [SerializeField] private LayerMask transparencyLayer;
         [SerializeField] private Material transparentMaterial;
-        [SerializeField] private float minimumOffsetDistance = 8.5f;
         private Vector3 _offset;
 
 
@@ -54,7 +53,6 @@ using UnityEngine;
             {
                 StopCoroutine(_currentTransition);
             }
-            Debug.Log("CAMERA CONTROLLER");
             _isPaused = isPaused;
             _currentTransition = StartCoroutine(isPaused ? TransitionToPauseView() : TransitionToGameView());
         }

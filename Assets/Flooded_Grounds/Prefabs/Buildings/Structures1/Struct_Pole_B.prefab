@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3359106}
   - component: {fileID: 2340508}
   - component: {fileID: 6469574}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Struct_Pole_B_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 429034}
   - component: {fileID: 20524636}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Struct_Pole_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 3323636}
   - component: {fileID: 2309364}
   - component: {fileID: 6441736}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Struct_Pole_B_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

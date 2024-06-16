@@ -20,9 +20,9 @@ namespace HealthSystem
 
         protected override void Die()
         {
-            Debug.Log("Player died!");
             if (anim != null)
             {
+                GetComponentInChildren<TakeDamage>().OnPlayerDeath();
                 StartCoroutine(HandleDeathAnimation());
             }
 

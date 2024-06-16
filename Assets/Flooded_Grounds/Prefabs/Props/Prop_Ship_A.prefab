@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 453366}
   - component: {fileID: 20540928}
-  m_Layer: 8
+  - component: {fileID: 2401253823816090097}
+  m_Layer: 6
   m_Name: Prop_Ship_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,28 +46,49 @@ LODGroup:
   m_GameObject: {fileID: 127258}
   serializedVersion: 2
   m_LocalReferencePoint: {x: 2.6086283, y: 5.983595, z: 0.07194877}
-  m_Size: 35.72174
+  m_Size: 1
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.25
+  - screenRelativeHeight: 0.006998539
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2321186}
-  - screenRelativeHeight: 0.15033643
+  - screenRelativeHeight: 0.0042085415
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2323340}
-  - screenRelativeHeight: 0.095393986
+  - screenRelativeHeight: 0.0026704741
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2386416}
-  - screenRelativeHeight: 0.046613418
+  - screenRelativeHeight: 0.0013049033
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2370842}
   m_Enabled: 1
+--- !u!65 &2401253823816090097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127258}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 34.00597, y: 8.911827, z: 9.475601}
+  m_Center: {x: 3.045805, y: 3.955883, z: 0.53968585}
 --- !u!1 &145542
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +100,7 @@ GameObject:
   - component: {fileID: 481972}
   - component: {fileID: 3390172}
   - component: {fileID: 2323340}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Prop_Ship_A_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +183,7 @@ GameObject:
   - component: {fileID: 427104}
   - component: {fileID: 3366198}
   - component: {fileID: 2370842}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Prop_Ship_A_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +266,7 @@ GameObject:
   - component: {fileID: 470778}
   - component: {fileID: 3360456}
   - component: {fileID: 2386416}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Prop_Ship_A_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +350,7 @@ GameObject:
   - component: {fileID: 3368166}
   - component: {fileID: 2321186}
   - component: {fileID: 5315423237770058927}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Prop_Ship_A_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

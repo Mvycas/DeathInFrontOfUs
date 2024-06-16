@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472224}
   - component: {fileID: 20518996}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Struct_RadioTower_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 3344370}
   - component: {fileID: 2399066}
   - component: {fileID: 6454484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Struct_RadioTower_A_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 3395902}
   - component: {fileID: 2305172}
   - component: {fileID: 6458346}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Struct_RadioTower_A_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 3325706}
   - component: {fileID: 2332926}
   - component: {fileID: 6435416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Struct_RadioTower_A_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

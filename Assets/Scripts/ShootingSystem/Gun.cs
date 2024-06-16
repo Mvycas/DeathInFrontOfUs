@@ -7,13 +7,12 @@ namespace ShootingSystem
     {
         public Transform barrelEnd; 
         public float bulletSpeed = 1000f;
-        public float spreadAngle = 5f; // Degrees of spread
-        public GameObject muzzleFlashObject; // Assign muzzle flash in the editor
+        public float spreadAngle = 5f; 
+        public GameObject muzzleFlashObject; 
         public ObjectPool bulletPool; 
 
         private void Awake()
         {
-            // Ensure the muzzle flash is disabled on start
             muzzleFlashObject.SetActive(false);
         }
         
@@ -23,7 +22,7 @@ namespace ShootingSystem
             if (bullet == null) return;
             
             Vector3 shootDirection = Quaternion.Euler(
-                0, // Pitch
+                Random.Range(-spreadAngle, spreadAngle), // Pitch
                 Random.Range(-spreadAngle, spreadAngle), // Yaw
                 0 // Roll is typically not needed for bullets
             ) * barrelEnd.forward;

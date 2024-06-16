@@ -48,16 +48,15 @@ namespace ShootingSystem
         private void Attack()
         {
             
-            gun.muzzleFlashObject.SetActive(true);
-            gun.uziShootingAudio.Play();
+            //gun.muzzleFlashObject.SetActive(true);
+            //gun.uziShootingAudio.Play();
             gun.ShootBullet();
             _timestamp = Time.time + timeBetweenShots;
         }
         
         private void SetAttackEnd()
         {
-            gun.uziShootingAudio.Stop();
-            gun.muzzleFlashObject.SetActive(false);
+            gun.endAttack();
             AttackInProgress = false;
             _timestamp = 0; 
         }

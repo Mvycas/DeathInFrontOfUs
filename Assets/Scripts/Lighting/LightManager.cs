@@ -111,13 +111,13 @@ namespace Lighting
                 else
                 {
                     sunLight.color = Color.Lerp(_sunsetColor, _moonlightColor, (normalizedTime - 0.5f) * 2);
-                    NightTime();
                 }
 
                 time += Time.deltaTime;
                 yield return null;
             }
-
+            
+            NightTime();
             sunLight.intensity = 0;
             sunLight.color = _moonlightColor;
         }

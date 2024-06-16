@@ -21,6 +21,11 @@ namespace HealthSystem
         [SerializeField] private float knockbackDuration = 0.5f;
         private Vector3 knockbackVector;
         private float knockbackTimer;
+        
+        public AudioClip[] audioClips; // Assign this in the Inspector
+        private AudioSource audioSource;
+        private AudioClip zombieSplash;
+
 
         protected override void Awake()
         {
@@ -35,6 +40,19 @@ namespace HealthSystem
             knockbackTimer = 0;
         }
         
+        void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null || audioClips.Length < 2)
+            {
+                Debug.LogError("Incorrect setup of Audio components or clips");
+            }
+            audioSource.clip = audioClips[1];
+            audioSource.Play();
+            audioSource.clip = audioClips[0];
+
+        }
+
         private void Update()
         {
             if (knockbackTimer > 0)
@@ -51,18 +69,16 @@ namespace HealthSystem
             {
                 character.ApplyDamage(takenDamageAmount);
                 Vector3 effectPosition = GetComponent<Collider>().bounds.center;
-                Quaternion effectRotation = Quaternion.LookRotation(-collision.contacts[0].normal); // Orienting the effect
+                Quaternion effectRotation = Quaternion.LookRotation(-collision.contacts[0].normal); 
                 
-                // gore effect at the point of collision
                 var goreEffectInstance = Instantiate(goreEffectPrefab, effectPosition, effectRotation);
                 var ps = goreEffectInstance.GetComponent<ParticleSystem>();
+                audioSource.Play();
                 ps.Play();
 
-                // knockback
                 knockbackVector = -transform.forward;
                 knockbackTimer = knockbackDuration;
 
-                // destroy gore effect after particle system duration
                 Destroy(goreEffectInstance, ps.main.duration);
             }
         }

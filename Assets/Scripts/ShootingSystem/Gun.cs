@@ -9,11 +9,13 @@ namespace ShootingSystem
         public float bulletSpeed = 1000f;
         public float spreadAngle = 5f; 
         public GameObject muzzleFlashObject; 
-        public ObjectPool bulletPool; 
+        public ObjectPool bulletPool;
+        public AudioSource uziShootingAudio;
 
         private void Awake()
         {
             muzzleFlashObject.SetActive(false);
+            uziShootingAudio.GetComponent<AudioSource>();
         }
         
         public void ShootBullet()

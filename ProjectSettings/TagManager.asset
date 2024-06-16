@@ -18,6 +18,9 @@ TagManager:
   - VictoryPanel
   - ExitGameButton
   - bodyPart
+  - SUN
+  - PoleLight
+  - Sun
   layers:
   - Default
   - TransparentFX

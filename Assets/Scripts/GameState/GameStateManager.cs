@@ -1,4 +1,6 @@
-﻿using MovementSystem;
+﻿using System.Collections;
+using Lighting;
+using MovementSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +9,10 @@ namespace GameState
     public class GameStateManager : MonoBehaviour
     {
         public static GameStateManager Instance { get; private set; }
+        private PlayerController _playerController;  
+        private GameState _currentState;
+        private CameraController _cameraController;
+        private bool _gameStarted;
 
         public enum GameState
         {
@@ -16,10 +22,6 @@ namespace GameState
             GameOver,
             Victory
         }
-
-        private GameState _currentState;
-        private CameraController cameraController;
-        private bool _gameStarted;
 
         private void Awake()
         {
@@ -40,22 +42,25 @@ namespace GameState
             SceneManager.sceneLoaded -= OnSceneLoaded; 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
+
         private void OnDisable() {
             SceneManager.sceneLoaded -= OnSceneLoaded;  
         }
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            if (cameraController == null) {
-                cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+            if (_cameraController == null) {
+                _cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
             }
-
-            // to check if this is truly the first load of the game
+            
+            _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            
             if (!_gameStarted) {
                 _gameStarted = true;  
-                cameraController.SetPause(true);
+                _cameraController.SetPause(true);
                 CurrentState = GameState.GameStart;
             } else {
                 CurrentState = GameState.Playing;
+                LightManager.Instance.StartSunDimming();  
             }
         }
 
@@ -74,24 +79,28 @@ namespace GameState
             switch (state)
             {
                 case GameState.GameStart:
-                    Debug.Log("GameStateManager: sends UI MANAGER TO UPDATE UI WITH game start state");
                     Time.timeScale = 0; 
+                    _playerController.EnableControls(false);
                     UIManager.Instance.UpdateUI(state);
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1; 
+                    _playerController.EnableControls(true);
                     UIManager.Instance.UpdateUI(state);
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0; 
+                    _playerController.EnableControls(false);
                     UIManager.Instance.UpdateUI(state);
                     break;
                 case GameState.GameOver:
                     Time.timeScale = 0; 
+                    _playerController.EnableControls(false);
                     UIManager.Instance.UpdateUI(state);
                     break;
                 case GameState.Victory:
                     Time.timeScale = 0; 
+                    _playerController.EnableControls(false);
                     UIManager.Instance.UpdateUI(state);
                     break;
             }
@@ -101,12 +110,12 @@ namespace GameState
         {
             if (CurrentState == GameState.Playing)
             {
-                cameraController.SetPause(true);
+                _cameraController.SetPause(true);
                 CurrentState = GameState.Paused;
             }
             else if (CurrentState == GameState.Paused)
             {
-                cameraController.SetPause(false);
+                _cameraController.SetPause(false);
                 CurrentState = GameState.Playing;
             }
         }
@@ -114,7 +123,6 @@ namespace GameState
         public void NewGame()
         {
             if (CurrentState == GameState.Playing) return;
-            Debug.Log("Starting NEEEEW game...");
             SceneManager.LoadScene("Scene_A");
         }
 
@@ -130,14 +138,11 @@ namespace GameState
     
         public void ExitGame()
         {
-            Debug.Log("QUITTING GAME");
             Application.Quit();
             
-            // dev
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
             #endif
         }
-    
     }
 }

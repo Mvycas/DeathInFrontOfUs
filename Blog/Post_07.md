@@ -31,7 +31,7 @@ This gameplay will highlight and focus on the updates in the new version.
 
 You can find the original gameplay here:
 
-[Post 06 - The end: Gameplay and more info behind the project](./Blog/Post_06.md)
+[Post 06 - The end: Gameplay and more info behind the project](./Post_06.md)
 
 ##
 

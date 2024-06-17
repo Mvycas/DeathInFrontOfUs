@@ -9,7 +9,7 @@
 - [Post 04 - The Development continues: Camera obstruction and control systems](./Blog/Post_04.md)
 - [Post 05 - At the end of the journey](./Blog/Post_05.md)
 - [Post 06 - The end: Gameplay and more info behind the project](./Blog/Post_06.md)
-- [Post 07 - The end: Gameplay and more info behind the project](./Blog/Post_07.md)
+- [Post 07 - Blog Post 7 Update: new features and "DLC"](./Blog/Post_07.md)
 
 ## Sources:
 

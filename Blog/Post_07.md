@@ -1,5 +1,5 @@
 ---
-Title: "Blog Post 7 Update: new features and "DLC""
+Title: "Blog Post 7 Update: new features and DLC"
 Post date: "17-06-2024"
 Author: Martynas Vycas
 ---

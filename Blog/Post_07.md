@@ -16,6 +16,7 @@ I introduced a PC version, utilizing the mouse for aiming. Additionally, several
 - Camera post process effect when player receives damage - red vignette.
 - Adjusted navMesh and navAgent
 - Added 3D Sound : gun / zombie / gore
+- Zombie "knockback" upon bullet hit
 
 There is two additional branches:
 - PC_Version

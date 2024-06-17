@@ -24,11 +24,14 @@ namespace Lighting
 
         public void InitializeFlickeringLights()
         {
-            _flickeringLights.Clear();
-            LightFlicker[] allFlickerLights = FindObjectsOfType<LightFlicker>();
-            foreach (LightFlicker lightFlicker in allFlickerLights)
+            GameObject[] lights = GameObject.FindGameObjectsWithTag("PoleLight");
+            foreach (GameObject lightObject in lights)
             {
-                _flickeringLights.Add(lightFlicker);
+                LightFlicker lightFlicker = lightObject.GetComponent<LightFlicker>();
+                if (lightFlicker != null)
+                {
+                    _flickeringLights.Add(lightFlicker);
+                }
             }
         }
 

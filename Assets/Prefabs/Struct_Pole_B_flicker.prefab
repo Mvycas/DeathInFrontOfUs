@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7117224112916347080}
   m_Layer: 6
   m_Name: EnvLight
-  m_TagString: Untagged
+  m_TagString: PoleLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1ce5716fa3930418b04cc99e3ecf70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flickerLight: {fileID: 0}
+  flickerLight: {fileID: 992975171699645053}
   minIntensity: 0
   maxIntensity: 109
   normalColor: {r: 1, g: 1, b: 1, a: 1}

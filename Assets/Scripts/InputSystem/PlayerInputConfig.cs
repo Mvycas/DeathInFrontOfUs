@@ -16,6 +16,7 @@ namespace InputSystem
         private bool _changeCameraModeInput;
         private bool _esc;
         private bool _searchInput;
+        private bool _flashTrigger;
 
 
 
@@ -23,6 +24,10 @@ namespace InputSystem
         public Vector2 MovementInput {get => _movementInput;}
         public bool JumpInput { get => _jumpInput; }
         public bool SearchInput { get => _searchInput; }
+        public bool FlashTrigger
+        {
+            get => _flashTrigger; 
+        }
 
         private void Start()
         {
@@ -35,6 +40,7 @@ namespace InputSystem
             _movementInput = _playerInput.actions["Move"].ReadValue<Vector2>();
             _jumpInput = _playerInput.actions["Jump"].triggered;
             _searchInput = _playerInput.actions["Search"].IsPressed();
+            _flashTrigger = _playerInput.actions["Flash"].triggered;
             if (!_playerInput.actions["Menu"].triggered) return;
             GameStateManager.Instance.TogglePause(); 
         }

@@ -24,6 +24,16 @@ There is two additional branches:
 - PC_Version_Meleeman (DLC)
 
 The main branch remains unchanged and holds the original version developed within the project deadline, specifically designed for arcade machines.
+  
+##
+
+This gameplay will highlight and focus on the updates in the new version.
+
+You can find the original gameplay here:
+
+[Post 06 - The end: Gameplay and more info behind the project](./Blog/Post_06.md)
+
+##
 
 ## The new gameplay
 

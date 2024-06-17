@@ -8,6 +8,7 @@ This blog post will showcase the features that were added after the project dead
 I introduced a PC version, utilizing the mouse for aiming. Additionally, several new features and systems have been added: 
 
 - Added 8 way locomotion.
+- 8 way locomotion movement animation using blend tree
 - Dynamic lighting (Day, sunset, moonlight)
 - Flashlight (for player)
 - Added light for light poles / flickering script
